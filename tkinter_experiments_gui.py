@@ -1,25 +1,41 @@
 from tkinter import *
 from tkinter import filedialog
 
-root_dir = ""
+#root_dir = ""
 
 def locate_pathname(event):
     '''
     When user browses for directory
     '''
-    root.directory = filedialog.askdirectory()
-    print(root.directory)
-    root_dir = str(root.directory)
+    rootDirectory = filedialog.askdirectory()
+    root_dir = str(rootDirectory)
+    results_output(root_dir)
 
 def store_pathname(event):
     '''
     When user enters the pathname
     '''
     pathname = pathnameEntryBox.get()
-    print(pathname)
     root_dir = str(pathname)
+    results_output(root_dir)
+
+def results_output(root_dir):
+    '''
+    Window appears if root dir found
+    '''
+
+    ''' CONTINUE FROM HERE TOMORROW - NEED TO CREATE BUTTONS & LINK WITH THE MAIN PROGRAM'''
+    if root_dir:
+        result_window = Tk()
+        result_window.title('Results')
+        result_window.geometry("500x500+300+300")
+
+        Label(result_window,text="Results are in for:",anchor=W,justify=LEFT).pack()
+        Label(result_window,text=root_dir,wraplength=500,anchor=W,justify=LEFT).pack()
+
 
 root = Tk()
+root.title('Loop Check')
 root.geometry("203x138+300+300")
 
 #   Area to browse for dirctory and save to variable.
@@ -39,7 +55,6 @@ submitButton = Button(root,text="Submit")
 root_dir = str(submitButton.bind("<Button-1>",store_pathname))
 submitButton.grid(row=4,column=1)
 
-if root_dir != "":
-    print("Path is: " + str(root_dir))
+
 
 root.mainloop()
