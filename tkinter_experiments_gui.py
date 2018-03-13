@@ -39,4 +39,7 @@ submitButton = Button(root,text="Submit")
 root_dir = str(submitButton.bind("<Button-1>",store_pathname))
 submitButton.grid(row=4,column=1)
 
+if root_dir != "":
+    print("Path is: " + str(root_dir))
+
 root.mainloop()
