@@ -30,13 +30,35 @@ def results_output(root_dir):
         result_window.title('Results')
         result_window.geometry("500x500+300+300")
 
-        Label(result_window,text="Results are in for:",anchor=W,justify=LEFT).pack()
-        Label(result_window,text=root_dir,wraplength=500,anchor=W,justify=LEFT).pack()
+        summaryFrame = Frame(result_window)
+        summaryFrame.pack(side=TOP)
+        optionsFrame = Frame(result_window)
+        optionsFrame.pack(side=TOP)
+        Label(summaryFrame,text="Results are in for:",anchor=W,justify=LEFT).pack()
+        Label(summaryFrame,text=root_dir,wraplength=500,anchor=W,justify=LEFT).pack()
 
+        Button(optionsFrame,text="Copy to Clipboard").grid(row=0,column=0)
+        Button(optionsFrame,text="Save to File").grid(row=0,column=1)
+        Button(optionsFrame,text="Rescan").grid(row=0,column=2)
+
+        Button(optionsFrame, text="Start Again", command=result_window.destroy).grid(row=0,column=3)
 
 root = Tk()
 root.title('Loop Check')
 root.geometry("203x138+300+300")
+
+menuBar = Menu(root)
+root.config(menu=menuBar)   #   Display the menu
+
+fileMenu = Menu(menuBar, tearoff=0)
+fileMenu.add_command(label="Quit", command=root.quit)
+menuBar.add_cascade(label="File", menu=fileMenu)
+
+helpMenu = Menu(menuBar,tearoff=0)
+helpMenu.add_command(label="Instructions")  # Needs function
+helpMenu.add_command(label="Contact")   # Needs function
+helpMenu.add_command(label="FAQ")   # Needs function
+menuBar.add_cascade(label="Help", menu=helpMenu)
 
 #   Area to browse for dirctory and save to variable.
 Label(root,text="Please locate loops folder").grid(row=0,column=1,padx=5,pady=3)
@@ -54,7 +76,5 @@ root_dir = str(pathnameEntryBox.bind("<Return>",store_pathname))
 submitButton = Button(root,text="Submit")
 root_dir = str(submitButton.bind("<Button-1>",store_pathname))
 submitButton.grid(row=4,column=1)
-
-
 
 root.mainloop()
