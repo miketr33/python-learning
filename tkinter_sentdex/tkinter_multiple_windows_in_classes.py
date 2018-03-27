@@ -74,15 +74,18 @@ class ResultPage(tk.Frame):
 
         button1.pack(pady=10, padx=10)
 
+        #   Creates label to refresh
         results_of_button = "NO FILE ISSUES"
         self.results_of_button = results_of_button
         label2 = tk.Label(self,text=results_of_button)
         label2.pack(pady=10, padx=10)
 
+        # After button click, label 2 refreshes!
         button2 = tk.Button(self,text="Rescan",command=lambda: self.refresh_results(label2))
 
         button2.pack(pady=10,padx=10)
 
+    #   Refreshing method
     def refresh_results(self,label_to_update):
         label_to_update[ "text" ]=( "UPDATED" )
         label_to_update.update()
