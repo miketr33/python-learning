@@ -3,6 +3,10 @@ from tkinter import ttk     #   For more stylish GUI buttons etc.
 
 LARGE_FONT = ("Verdana", 12)
 
+'''
+Shell for creating windows that can update and move between.
+'''
+
 def update():
     '''Need to first clear window then replace with new info'''
 
@@ -70,7 +74,23 @@ class ResultPage(tk.Frame):
 
         button1.pack(pady=10, padx=10)
 
+        results_of_button = "NO FILE ISSUES"
+        self.results_of_button = results_of_button
+        label2 = tk.Label(self,text=results_of_button)
+        label2.pack(pady=10, padx=10)
+
+        button2 = tk.Button(self,text="Rescan",command=lambda: self.refresh_results(label2))
+
+        button2.pack(pady=10,padx=10)
+
+    def refresh_results(self,label_to_update):
+        label_to_update[ "text" ]=( "UPDATED" )
+        label_to_update.update()
+
 def qf(quickPrint):
     print(quickPrint)
+
+
+
 app = NoiizLoopCheckerApp()
 app.mainloop()
