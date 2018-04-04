@@ -36,7 +36,7 @@ class NoiizLoopCheckerApp(tk.Tk):
 
             self.frames[F] = frame
 
-            frame.grid(row=0, column=0, sticky="nsew")
+            #frame.grid(row=0, column=0, sticky="nsew")
 
         #   Calling StartPage to show first but this will change later on.
         self.show_frame(StartPage)
@@ -54,7 +54,7 @@ class StartPage(tk.Frame):
         tk.Frame.__init__(self, parent)
 
         label1 = tk.Label(self, text="This is the start page.")
-        label1.pack(pady=10, padx=10)
+        label1.grid(row=0,cp;i)
 
         button1 = tk.Button(self,text="Next Page",
                             command=lambda: controller.show_frame(ResultPage))
